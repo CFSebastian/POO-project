@@ -19,7 +19,18 @@ public:
         out<<"Gun recoil"<<gun.recoil<<"\n";
         return out;
     }
-
+    Gun& operator=(const Gun& g) {
+        this->G_Name = g.G_Name;
+        this->damage = g.damage;
+        this->magazine =g.magazine;
+        this->recoil =g.recoil;
+    }
+    Gun(const Gun& g) {
+        this->G_Name = g.G_Name;
+        this->damage = g.damage;
+        this->magazine =g.magazine;
+        this->recoil =g.recoil;
+    }
 };
 class Player {
 private:
@@ -60,6 +71,12 @@ public:
         this->Mob_Speed =ms;
         this->Mob_Damage = md;
     }
+    Enemy(const Enemy &m) {
+        this->Mob_Name = m.Mob_Name;
+        this->Mob_Health = m.Mob_Health;
+        this->Mob_Speed =m.Mob_Speed;
+        this->Mob_Damage = m.Mob_Damage;
+    }
     friend std::ostream& operator<<(std::ostream &out,const Enemy &m) {
         out<<"Enemy name: "<<m.Mob_Name<<"; ";
         out<<"Enemy health: "<<m.Mob_Health<<"; ";
@@ -67,6 +84,7 @@ public:
         out<<"Enemy damage: "<<m.Mob_Damage<<"\n";
         return out;
     }
+
 };
 int main() {
     std::cout << "Hello, world!\n";
