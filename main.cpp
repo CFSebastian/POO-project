@@ -3,7 +3,7 @@ class Gun{
 private:
     std::string G_Name;
     int damage, magazine, recoil;
-   ///friend class Player;
+
 public:
     Gun() = default;
     ~Gun() = default;
@@ -27,13 +27,7 @@ public:
         this->recoil =g.recoil;
         return *this;
     }
-    /*Gun(const Gun& g) {
-        this->G_Name = g.G_Name;
-        this->damage = g.damage;
-        this->magazine =g.magazine;
-        this->recoil =g.recoil;
-    }*/
-    //friend Attack;
+
     int getDamage() const {
         return damage;
     }
@@ -69,16 +63,14 @@ public:
         out<<"Player gun: "<<p.P_Gun.getGNume()<<"\n";
         return out;
     }
-    /*friend class Gun int Attack(const int& pp, int& hp,const friend Gun g) {
-        hp = hp - (g.recoil-pp);
-        return pp+g.damage;
-
-    }*/
     int getPAttack() const {
         return power_points*P_Gun.getDamage();
     }
     void P_Damage_Taken(const int& x) {
         health_points=health_points-x;
+    }
+    int getPRecoil() const {
+        return P_Gun.getRecoil();
     }
 
 };
@@ -119,7 +111,7 @@ public:
 };
 int main() {
 
-    Gun gun1("Pistol",25,7,0);
+    Gun gun1("Pistol",25,7,1);
     std::cout<<gun1<<'\n';
     Player p1("Player1",300,100,1,gun1);
     std::cout<<p1<<'\n';
@@ -127,7 +119,9 @@ int main() {
     std::cout<<mob1<<'\n';
     std::cout<<"------------------------------------------------------\n";
     mob1.E_Damage_Taken(p1.getPAttack());
+    p1.P_Damage_Taken(p1.getPRecoil());
     std::cout<<mob1<<'\n';
+    std::cout<<p1<<'\n';
     p1.P_Damage_Taken(mob1.getEAttack());
     std::cout<<p1<<'\n';
     std::cout<<"------------------------------------------------------\n";
