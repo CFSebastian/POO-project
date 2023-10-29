@@ -34,29 +34,39 @@ public:
         this->recoil =g.recoil;
     }*/
     //friend Attack;
+    int getDamage() const {
+        return damage;
+    }
+    int getRecoil() const {
+        return recoil;
+    }
+    const std::string &getGNume() const {
+        return G_Name;
+    }
 };
 class Player {
 private:
     std::string name;
     int health_points,speed_points,power_points;
-/*private:
-    Gun P_Gun;*/
+
+    Gun P_Gun;
 public:
     Player() = default;
     ~Player() = default;
 
-    Player(const std::string& name, int hp, const int& sp, const int& pp) {
+    Player(const std::string& name, int hp, const int& sp, const int& pp,const Gun& pg) {
         this->name=name;
         this->health_points=hp;
         this->speed_points=sp;
         this->power_points=pp;
-       // this->P_Gun=gun;
+        this->P_Gun=pg;
     }
     friend std::ostream& operator<<(std::ostream &out,const Player &p) {
         out<<"Player name: "<<p.name<<"; ";
         out<<"Player health: "<<p.health_points<<"; ";
         out<<"Player speed: "<<p.speed_points<<"; ";
-        out<<"Player power: "<<p.power_points<<"\n";
+        out<<"Player power: "<<p.power_points<<"; ";
+        out<<"Player gun: "<<p.P_Gun.getGNume()<<"\n";
         return out;
     }
     /*friend class Gun int Attack(const int& pp, int& hp,const friend Gun g) {
@@ -64,8 +74,11 @@ public:
         return pp+g.damage;
 
     }*/
-    void P_Damage_Taken(Player& P,const int& x) {
-        P.health_points = P.health_points-x;
+    int getPAttack() const {
+        return power_points*P_Gun.getDamage();
+    }
+    void P_Damage_Taken(const int& x) {
+        health_points=health_points-x;
     }
 
 };
@@ -96,11 +109,11 @@ public:
         out<<"Enemy damage: "<<m.Mob_Damage<<"\n";
         return out;
     }
-    int E_Attack(const Enemy& mob) {
-        return mob.Mob_Damage;
+    int getEAttack() const {
+        return Mob_Damage;
     }
-    void E_Damage_Taken(Enemy& m, const int& x) {
-        m.Mob_Health=m.Mob_Health-x;
+    void E_Damage_Taken(const int& x) {
+        Mob_Health=Mob_Health-x;
     }
 
 };
@@ -108,14 +121,17 @@ int main() {
 
     Gun gun1("Pistol",25,7,0);
     std::cout<<gun1<<'\n';
-    Player p1("Player1",300,100,50);
+    Player p1("Player1",300,100,1,gun1);
     std::cout<<p1<<'\n';
-    Enemy m1("Zombi",100,50,50);
-    std::cout<<m1<<'\n';
-    //----------------------------------------
-   // Enemy::E_Damage_Taken(m1,10);
-    //----------------------------------------
-    Enemy m2(m1);
+    Enemy mob1("Zombi",100,50,50);
+    std::cout<<mob1<<'\n';
+    std::cout<<"------------------------------------------------------\n";
+    mob1.E_Damage_Taken(p1.getPAttack());
+    std::cout<<mob1<<'\n';
+    p1.P_Damage_Taken(mob1.getEAttack());
+    std::cout<<p1<<'\n';
+    std::cout<<"------------------------------------------------------\n";
+    Enemy m2(mob1);
     std::cout<<m2<<'\n';
     Gun gun2,gun3;
     gun3 = gun2 = gun1;
