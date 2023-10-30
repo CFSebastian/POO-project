@@ -111,11 +111,16 @@ public:
 };
 int main() {
 
-    Gun gun1("Pistol",25,7,1);
+    Gun gun1("Pistol",50,7,1);
+    Gun gun4("Big Iron",100,7,10);
     std::cout<<gun1<<'\n';
-    Player p1("Player1",300,100,1,gun1);
+
+    Player p1("Police man",300,100,1,gun1);
+    Player p2("Soldier",300,120,2,gun4);
+
     std::cout<<p1<<'\n';
     Enemy mob1("Zombi",100,50,50);
+    Enemy mob2("Golem",500,10,100);
     std::cout<<mob1<<'\n';
     std::cout<<"------------------------------------------------------\n";
     mob1.E_Damage_Taken(p1.getPAttack());
@@ -131,5 +136,13 @@ int main() {
     gun3 = gun2 = gun1;
     std::cout<<gun2<<'\n';
     std::cout<<gun3<<'\n';
+    std::cout<<"------------------------------------------------------\n";
+    std::cout<<"Chose your character (press 1 or 2)";
+    int n;
+    std::cin>>n;
+    if(n==1)
+        std::cout<<p1<<'\n';
+    if(n==2)
+        std::cout<<p2<<'\n';
     return 0;
 }
