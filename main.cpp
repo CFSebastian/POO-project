@@ -137,12 +137,5 @@ int main() {
     std::cout<<gun2<<'\n';
     std::cout<<gun3<<'\n';
     std::cout<<"------------------------------------------------------\n";
-    std::cout<<"Chose your character (press 1 or 2)";
-    int n;
-    std::cin>>n;
-    if(n==1)
-        std::cout<<p1<<'\n';
-    if(n==2)
-        std::cout<<p2<<'\n';
-    return 0;
+
 }
