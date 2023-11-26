@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+//#include <random>
 //#include <fstream>
 #include "headers/Player.hpp"
 #include "headers/Enemy.hpp"
@@ -38,13 +39,13 @@ int main() {
     Player p1("circle","red","Police man",300,100,1,gun1);
     Player p2("circle","red","Soldier",300,120,2,gun4);
     std::vector<Player> listPlayers{p1,p2};
-    int gameOn=1;
+   /* int gameOn=1;
     int navigater=1;
    while(gameOn){
 
         switch (navigater) {
             case 1:/// Create a user to asociate to the score you will obtain when you play
-            {
+            {*/
                 int invalidName=1;
                 std::vector<User> userScore;
                 std::cout<<"insert name:";
@@ -94,7 +95,7 @@ int main() {
                 //  writeScoresToFile(userScore, "Score.txt");
                 /* for(const auto&ptr : inventory)
                      delete ptr;*/
-                break;
+        /*        break;
             }
             case 2:///exit
             {
@@ -103,13 +104,13 @@ int main() {
             }
             default:
             {
-                std::cout<<"?!";
+                std::cout<<"What?!";
                 break;
             }
         }
         if(gameOn)
             std::cin>>navigater;
-    }
+   }*/
 
 
 

@@ -27,7 +27,7 @@ public:
     int getPAttack() const ;
     void P_Damage_Taken(const int& x) ;
     int getPRecoil() const ;
-   // Entity * clone() override;
+    //Entity * clone() override;
 
 };
 
