@@ -1,6 +1,9 @@
-//
-// Created by sebas on 24.11.2023.
-//
+/*
+ * Nume fisier: Etity.hpp
+ * Autor: Colt Sebastian
+ * Data: 24/11/2023
+ * Descriere:
+ */
 #include <iostream>
 #ifndef OOP_ENTITY_HPP
 #define OOP_ENTITY_HPP

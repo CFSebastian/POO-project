@@ -1,6 +1,9 @@
-//
-// Created by sebas on 25.11.2023.
-//
+/*
+ * Nume fisier:User.hpp
+ * Autor: Colt Sebastian
+ * Data: 24/11/2023
+ * Descriere:
+ */
 #include <iostream>
 
 #ifndef OOP_SCORE_HPP
@@ -14,8 +17,8 @@ class User {
     int id=0;
     static int counter;
 public:
-    User( std::string name="", int score=0);
-
+    explicit User(const  std::string &name="",const int &score=0);
+///functions for interactions
     const std::string &getName() const;
 
     int getScore() const;

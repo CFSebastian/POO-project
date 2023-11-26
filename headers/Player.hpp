@@ -1,6 +1,9 @@
-//
-// Created by sebas on 24.11.2023.
-//
+/*
+ * Nume fisier:Player.hpp
+ * Autor: Colt Sebastian
+ * Data: 24/11/2023
+ * Descriere:
+ */
 #include <iostream>
 #ifndef OOP_PLAYER_HPP
 #define OOP_PLAYER_HPP
@@ -20,6 +23,7 @@ public:
     Player(const std::string &shape, const std::string &color,
            const std::string& name, int hp, const int& sp, const int& pp,const Gun& pg) ;
     friend std::ostream& operator<<(std::ostream &out,const Player &p) ;
+    ///functions for interactions
     int getPAttack() const ;
     void P_Damage_Taken(const int& x) ;
     int getPRecoil() const ;

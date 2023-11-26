@@ -1,6 +1,9 @@
-//
-// Created by sebas on 25.11.2023.
-//
+/*
+ * Nume fisier:Gun.cpp
+ * Autor: Colt Sebastian
+ * Data: 24/11/2023
+ * Descriere:
+ */
 #include <iostream>
 #include "../headers/Gun.hpp"
 /*

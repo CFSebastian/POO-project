@@ -1,6 +1,9 @@
-//
-// Created by sebas on 25.11.2023.
-//
+/*
+ * Nume fisier: Gun.hpp
+ * Autor: Colt Sebastian
+ * Data: 24/11/2023
+ * Descriere:
+ */
 #include <iostream>
 #ifndef OOP_BULLET_HPP
 #define OOP_BULLET_HPP
@@ -20,6 +23,7 @@ public:
     friend std::ostream& operator<<(std::ostream& out, const Gun& gun);
     Gun(const Gun &m) ;
     Gun& operator=(const Gun& g);
+    ///functions for interactions
     //void use (Player &shooter, Enemy &target);
     int getDamage() const ;
     int getRecoil() const ;

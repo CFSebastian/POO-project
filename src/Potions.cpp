@@ -1,11 +1,15 @@
-//
-// Created by sebas on 26.11.2023.
-//
+/*
+ * Nume fisier:Potions.cpp
+ * Autor: Colt Sebastian
+ * Data: 24/11/2023
+ * Descriere:
+ */
 
 #include "../headers/Potions.hpp"
 
 #include <iostream>
-Potions::Potions(const std::string &name, int modifier, int type) : Item(name), modifier(modifier), type(type) {}
+
+Potions::Potions(const std::string &name, const int &modifier, const int &type) : Item(name), modifier(modifier), type(type) {}
 
 void Potions::print() {
     Item::print();
@@ -17,12 +21,12 @@ void Potions::use() {
     std::cout << '\n';
     switch (this->type) {
         case 1: {
-            std::cout << "healing";
+            std::cout << "healing\n";
             break;
         }
         case 2:
         {
-            std::cout << "buffing";
+            std::cout << "buffing\n";
             break;
         }
     }

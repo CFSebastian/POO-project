@@ -1,6 +1,9 @@
-//
-// Created by sebas on 26.11.2023.
-//
+/*
+ * Nume fisier: Item.hpp
+ * Autor: Colt Sebastian
+ * Data: 24/11/2023
+ * Descriere:
+ */
 #include <iostream>
 #ifndef OOP_ITEM_HPP
 #define OOP_ITEM_HPP
@@ -13,8 +16,10 @@ public:
     Item()=default;
     virtual ~Item()=default;
     explicit Item(const std::string &name);
-    virtual void use();
     virtual void print();
+    ///functions for interactions
+    virtual void use();
+
 };
 
 

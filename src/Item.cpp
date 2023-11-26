@@ -1,6 +1,9 @@
-//
-// Created by sebas on 26.11.2023.
-//
+/*
+ * Nume fisier:Item.cpp
+ * Autor: Colt Sebastian
+ * Data: 24/11/2023
+ * Descriere:
+ */
 
 #include "../headers/Item.hpp"
 

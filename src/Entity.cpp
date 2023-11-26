@@ -1,6 +1,9 @@
-//
-// Created by sebas on 24.11.2023.
-//
+/*
+ * Nume fisier:Entity.cpp
+ * Autor: Colt Sebastian
+ * Data: 24/11/2023
+ * Descriere:
+ */
 
 #include "../headers/Entity.hpp"
 

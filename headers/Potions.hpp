@@ -1,11 +1,13 @@
-//
-// Created by sebas on 26.11.2023.
-//
-
+/*
+ * Nume fisier:Potions.hpp
+ * Autor: Colt Sebastian
+ * Data: 24/11/2023
+ * Descriere:
+ */
 #ifndef OOP_POTIONS_HPP
 #define OOP_POTIONS_HPP
 
-#include "Entity.hpp"
+//#include "Entity.hpp"
 #include "Item.hpp"
 
 class Potions : public Item{
@@ -13,9 +15,10 @@ class Potions : public Item{
 public:
     Potions()=default;
     ~Potions()=default;
-    Potions(const std::string &name, int modifier, int type);
-    void print();
-    void use();
+    Potions(const std::string &name, const int &modifier, const int &type);
+    void print() override;
+    ///functions for interactions
+    void use() override;
 };
 
 

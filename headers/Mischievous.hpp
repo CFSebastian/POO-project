@@ -1,6 +1,9 @@
-//
-// Created by sebas on 26.11.2023.
-//
+/*
+ * Nume fisier:Mischievous.hpp
+ * Autor: Colt Sebastian
+ * Data: 24/11/2023
+ * Descriere:
+ */
 
 #ifndef OOP_MISCHIEVOUS_HPP
 #define OOP_MISCHIEVOUS_HPP
@@ -14,10 +17,14 @@ private:
 public:
     Mischievous()=default;
     ~Mischievous()=default;
+    /*Mischievous(const std::string &name,
+                const std::string &description, const int& worth);*/
     Mischievous(const std::string &name,
-                const std::string &description, const int& worth);
-    void use();
-    void print();
+                 std::string description, int worth);
+    void print() override;
+    ///functions for interactions
+    void use() override;
+
 };
 
 

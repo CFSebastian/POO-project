@@ -1,4 +1,9 @@
-///Sorry for my bad english.
+/*
+ * Nume fisier: main.cpp
+ * Autor: Colt Sebastian
+ * Data: 26/11/2023
+ *
+ */
 
 #include <iostream>
 #include <vector>
@@ -12,30 +17,17 @@
 #include "headers/Potions.hpp"
 
 int main() {
-    /// Create a user to asociate to the score you will obtain when you play
-    bool invalidName=1;
-    std::vector<User> userScore;
-
-   std::cout<<"insert name:";
-    while(invalidName){
-        std::string userName;
-
-        std::cin>>userName;
-        try{
-
-            User curentUser(userName);
-            invalidName=0;
-        }
-        catch(std::exception& e) {
-            std::cerr<<e.what()<<'\n';
-        }
-    }
     ///create the list of guns, enemys and items that will apear in game and playeble character and invetory that the user will select
-    Mischievous i1("Chandelier","fancy",10);
+    std::vector<std::shared_ptr<Item>> listItems;
+    listItems.push_back(std::make_shared<Mischievous>("Chandelier", "fancy", 10));
+    listItems.push_back(std::make_shared<Mischievous>("Statue", "old", 15));
+    listItems.push_back(std::make_shared<Potions>("healing", 1, 10));
+    listItems.push_back(std::make_shared<Potions>("Buff", 2, 10));
+    /*Mischievous i1("Chandelier","fancy",10);
     Mischievous i2("Statue","old",15);
     Potions b1("healing",1,10);
     Potions b2("Buff",2,10);
-    std::vector<Item> listItems{i1,i2,b1,b2};
+    std::vector<Item> listItems{i1,i2,b1,b2};*/
     ///enemys posible for spawn
     Enemy mob1("circle","red","Zombi",100,50,50);
     Enemy mob2("circle","red","Golem",500,10,100);
@@ -46,40 +38,79 @@ int main() {
     Player p1("circle","red","Police man",300,100,1,gun1);
     Player p2("circle","red","Soldier",300,120,2,gun4);
     std::vector<Player> listPlayers{p1,p2};
-    std::vector<Item*> inventory;
+    int gameOn=1;
+    int navigater=1;
+   while(gameOn){
 
-    //std::shared_ptr<Item>inventory=std::make_shared<Item>("inventory");
-    std::cout<<listPlayers[0]<<'\n';
-    inventory.push_back(new Item);
-    inventory.push_back(new Item);
-    inventory[0]=&i1;
-    inventory[1]=&b1;
-    for(const auto&ptr : inventory) {
-        ptr->use();
-        ptr->print();
+        switch (navigater) {
+            case 1:/// Create a user to asociate to the score you will obtain when you play
+            {
+                int invalidName=1;
+                std::vector<User> userScore;
+                std::cout<<"insert name:";
+                while(invalidName){
+                    std::string userName;
+
+                    std::cin>>userName;
+                    try{
+
+                        User curentUser(userName);
+                        invalidName=0;
+                    }
+                    catch(std::exception& e) {
+                        std::cerr<<e.what()<<'\n';
+                    }
+                }
+                //std::shared_ptr<Item>inventory=std::make_shared<Item>("inventory");
+                //std::cout<<listPlayers[0]<<'\n';
+                std::vector<std::shared_ptr<Item>> inventory;
+                inventory.push_back(std::make_shared<Item>());
+                inventory.push_back(std::make_shared<Item>());
+                inventory[0] = listItems[0];
+                inventory[1] = listItems[2];
+                for(const auto&ptr : inventory) {
+                    ptr->use();
+                    ptr->print();
+                }
+                std::cout<<p1<<'\n';
+
+                //mob1.afisare();
+                std::cout<<mob1<<'\n';
+                std::cout<<"------------------------------------------------------\n";
+                mob1.E_Damage_Taken(p1.getPAttack());
+                p1.P_Damage_Taken(p1.getPRecoil());
+                std::cout<<mob1<<'\n';
+                std::cout<<p1<<'\n';
+                p1.P_Damage_Taken(mob1.getEAttack());
+                std::cout<<p1<<'\n';
+                std::cout<<"------------------------------------------------------\n";
+                Enemy m2(mob1);
+                std::cout<<m2<<'\n';
+                Gun gun2,gun3;
+                gun3 = gun2 = gun1;
+                std::cout<<gun2<<'\n';
+                std::cout<<gun3<<'\n';
+                std::cout<<"------------------------------------------------------\n";
+                //  writeScoresToFile(userScore, "Score.txt");
+                /* for(const auto&ptr : inventory)
+                     delete ptr;*/
+                break;
+            }
+            case 2:///exit
+            {
+                gameOn=0;
+                break;
+            }
+            default:
+            {
+                std::cout<<"?!";
+                break;
+            }
+        }
+        if(gameOn)
+            std::cin>>navigater;
     }
-    std::cout<<p1<<'\n';
 
-    //mob1.afisare();
-    std::cout<<mob1<<'\n';
-    std::cout<<"------------------------------------------------------\n";
-    mob1.E_Damage_Taken(p1.getPAttack());
-    p1.P_Damage_Taken(p1.getPRecoil());
-    std::cout<<mob1<<'\n';
-    std::cout<<p1<<'\n';
-    p1.P_Damage_Taken(mob1.getEAttack());
-    std::cout<<p1<<'\n';
-    std::cout<<"------------------------------------------------------\n";
-    Enemy m2(mob1);
-    std::cout<<m2<<'\n';
-    Gun gun2,gun3;
-    gun3 = gun2 = gun1;
-    std::cout<<gun2<<'\n';
-    std::cout<<gun3<<'\n';
-    std::cout<<"------------------------------------------------------\n";
-  //  writeScoresToFile(userScore, "Score.txt");
-   /* for(const auto&ptr : inventory)
-        delete ptr;*/
-   std::cout<<"hello";
+
 
 }
