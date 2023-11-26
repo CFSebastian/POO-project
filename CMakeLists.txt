@@ -8,6 +8,9 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+
+
+
 option(WARNINGS_AS_ERRORS "Treat warnings as errors" OFF)
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
@@ -67,6 +70,29 @@ endfunction()
 ###############################################################################
 
 # external dependencies with FetchContent
+include(FetchContent)
+
+# NOTE: Also update SFML_VERSION env var in .github/workflows/cmake.yml:122
+FetchContent_Declare(
+        SFML
+        GIT_REPOSITORY https://github.com/SFML/SFML.git
+        GIT_TAG        863fef024619da7f59b6404087b454337a172ac1 # 2.6.x as of 2022-08-30
+        # GIT_TAG        72d88033e2f24be0fb1e9df614a56f3d5274154c # master as of 2022-08-30
+        # GIT_TAG        f7c88ee7ef4e1c705531cd614efb7dcff1f873cb # last commit merged in master before API breakage (2022-04-21)
+        # GIT_TAG        origin/master
+        # GIT_TAG        origin/2.6.x
+        # GIT_SHALLOW    1  # works only with branches or tags, not with arbitrary commit hashes
+)
+
+
+FetchContent_MakeAvailable(SFML)
+
+set_custom_stdlib_and_sanitizers(sfml-system false)
+set_custom_stdlib_and_sanitizers(sfml-window false)
+set_custom_stdlib_and_sanitizers(sfml-graphics false)
+
+###############################################################################
+# external dependencies with FetchContent
 # include(FetchContent)
 #
 # NOTE: Also update env vars used for caching in
@@ -90,7 +116,26 @@ endfunction()
 ###############################################################################
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} main.cpp
+        src/Entity.cpp
+        headers/Entity.hpp
+        src/Enemy.cpp
+        headers/Enemy.hpp
+        src/Player.cpp
+        headers/Player.hpp
+        src/Gun.cpp
+        headers/Gun.hpp
+        src/User.cpp
+        headers/User.hpp
+        src/Exceptions.cpp
+        headers/Exceptions.hpp
+        src/Item.cpp
+        headers/Item.hpp
+        src/Mischievous.cpp
+        headers/Mischievous.hpp
+        headers/Potions.hpp
+        src/Potions.cpp
+)
 
 ###############################################################################
 
