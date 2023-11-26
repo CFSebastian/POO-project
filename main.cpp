@@ -78,6 +78,6 @@ int main() {
     std::cout<<gun3<<'\n';
     std::cout<<"------------------------------------------------------\n";
   //  writeScoresToFile(userScore, "Score.txt");
-    for(const auto&ptr : inventory)
-        delete ptr;
+   /* for(const auto&ptr : inventory)
+        delete ptr;*/
 }
