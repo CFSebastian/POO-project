@@ -11,7 +11,7 @@ private:
    std::string name;
 public:
     Item()=default;
-    ~Item()=default;
+    virtual ~Item()=default;
     explicit Item(const std::string &name);
     virtual void use();
     virtual void print();

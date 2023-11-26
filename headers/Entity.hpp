@@ -13,7 +13,7 @@ private:
 
 public:
     Entity() = default;
-    //~Entity() = default;
+    ~Entity() = default;
     Entity(const std::string &shape, const std::string &color);
     Entity (const Entity &m);
     //void afisare()=0;
