@@ -14,7 +14,8 @@ private:
 public:
     Mischievous()=default;
     ~Mischievous()=default;
-    Mischievous(const std::string &name, const std::string &description, const int& worth);
+    Mischievous(const std::string &name,
+                const std::string &description, const int& worth);
     void use();
     void print();
 };

@@ -18,6 +18,7 @@ public:
     ~Gun() = default;
     Gun(const std::string &shape, const std::string &color,const std::string& gn, const int& dmg, const int& mag, const int& recoil) ;
     friend std::ostream& operator<<(std::ostream& out, const Gun& gun);
+    Gun(const Gun &m) ;
     Gun& operator=(const Gun& g);
     //void use (Player &shooter, Enemy &target);
     int getDamage() const ;

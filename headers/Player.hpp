@@ -17,7 +17,8 @@ public:
     Player() = default;
     ~Player() = default;
 
-    Player(const std::string &shape, const std::string &color,const std::string& name, int hp, const int& sp, const int& pp,const Gun& pg) ;
+    Player(const std::string &shape, const std::string &color,
+           const std::string& name, int hp, const int& sp, const int& pp,const Gun& pg) ;
     friend std::ostream& operator<<(std::ostream &out,const Player &p) ;
     int getPAttack() const ;
     void P_Damage_Taken(const int& x) ;

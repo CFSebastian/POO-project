@@ -11,7 +11,7 @@
 class User {
     std::string name;
     int score;
-    int id;
+    int id=0;
     static int counter;
 public:
     User( std::string name="", int score=0);

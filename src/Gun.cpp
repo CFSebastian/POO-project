@@ -39,6 +39,12 @@ Gun::Gun(const std::string &shape, const std::string &color,const std::string& g
     this->magazine=mag;
     this->recoil=recoil;
 }
+Gun::Gun(const Gun &m) : Entity(m) {
+    this->G_Name = m.G_Name;
+    this->damage = m.damage;
+    this->magazine =m.magazine;
+    this->recoil = m.recoil;
+}
 std::ostream& operator<<(std::ostream& out, const Gun& gun) {
     out<<"Gun name: "<<gun.G_Name<<"; ";
     out<<"Gun damage: "<<gun.damage<<"; ";
