@@ -80,4 +80,5 @@ int main() {
   //  writeScoresToFile(userScore, "Score.txt");
    /* for(const auto&ptr : inventory)
         delete ptr;*/
+   std::cout<<"ceva";
 }
