@@ -16,7 +16,22 @@
 #include "headers/User.hpp"
 #include "headers/Mischievous.hpp"
 #include "headers/Potions.hpp"
-
+void use_item(const std::vector<std::shared_ptr<Item>> &inv, Player p) {
+    int wichItem;
+    std::cout<<"select the item you wnt to use:";
+    std::cin>>wichItem;
+    //std::shared_ptr<Item> itemUsed=inv[wichItem];
+    //itemUsed->use();
+    inv[wichItem]->use();
+    if (auto potionItem = dynamic_cast<Potions*>(inv[wichItem].get())) {
+        potionItem->interact(p); // Specific action for Potions
+    }
+        // Attempt to downcast to Weapons
+    else if (auto mischievousItem = dynamic_cast<Mischievous*>(inv[wichItem].get())) {
+        std::cout<<"Nu pot face nimic cu asta";
+        mischievousItem->print();
+    }
+}
 int main() {
     ///create the list of guns, enemys and items that will apear in game and playeble character and invetory that the user will select
     std::vector<std::shared_ptr<Item>> listItems;
@@ -69,6 +84,7 @@ int main() {
                 inventory.push_back(std::make_shared<Item>());
                 inventory[0] = listItems[0];
                 inventory[1] = listItems[2];
+                use_item(inventory,p1);
                 for(const auto&ptr : inventory) {
                     ptr->use();
                     ptr->print();

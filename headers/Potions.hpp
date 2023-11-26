@@ -7,7 +7,7 @@
 #ifndef OOP_POTIONS_HPP
 #define OOP_POTIONS_HPP
 
-//#include "Entity.hpp"
+#include "Player.hpp"
 #include "Item.hpp"
 
 class Potions : public Item{
@@ -19,6 +19,7 @@ public:
     void print() override;
     ///functions for interactions
     void use() override;
+    static void interact(Player &target);
 };
 
 

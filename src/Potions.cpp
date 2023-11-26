@@ -18,17 +18,19 @@ void Potions::print() {
 void Potions::use() {
     std::cout << "You used the potion: ";
     Item::print();
-    std::cout << '\n';
     switch (this->type) {
         case 1: {
-            std::cout << "healing\n";
+            std::cout << " and gained" <<this->modifier<<" health\n";
             break;
         }
         case 2:
         {
-            std::cout << "buffing\n";
+            std::cout << " and gained" <<this->modifier<<" strength\n";
             break;
         }
     }
+}
+ void Potions::interact(Player &target) {
+    std::cout<<"you interacted with"<<target.getPAttack();
 }
 
