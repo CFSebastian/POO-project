@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include <limits>
 //#include <random>
 //#include <fstream>
 #include "headers/Player.hpp"
@@ -19,7 +20,14 @@
 void use_item(const std::vector<std::shared_ptr<Item>> &inv, Player &p) {
     int whichItem;
     std::cout<<"select the item you want to use:";
-    std::cin>>whichItem;
+    //std::cin>>whichItem;
+    // Check if user input is a valid integer
+    if (!(std::cin >> whichItem)) {
+        std::cerr << "Invalid input. Please enter a valid integer." << std::endl;
+        std::cin.clear();  // Clear error flag
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Discard invalid input
+        return;
+    }
     if (whichItem >= 0 && whichItem < static_cast<int>(inv.size())) {
         const std::shared_ptr<Item> &itemUsed = inv[whichItem];
         itemUsed->use();
