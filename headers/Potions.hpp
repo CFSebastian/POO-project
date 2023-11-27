@@ -19,7 +19,7 @@ public:
     void print() override;
     ///functions for interactions
     void use() override;
-    static void interact(Player &target);
+    static void interact(const Player &target);
 };
 
 

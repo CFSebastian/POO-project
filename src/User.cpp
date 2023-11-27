@@ -18,7 +18,7 @@ User::User(const std::string &name,const int &score) : name(name), score(score),
         throw ExceptionScoreNameLenght();
     }
 }
-
+/*
 int User::getScore() const {
     return score;
 }
@@ -26,5 +26,5 @@ int User::getScore() const {
 const std::string &User::getName() const {
     return name;
 }
-
+*/
 

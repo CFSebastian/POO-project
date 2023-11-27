@@ -16,7 +16,7 @@
 #include "headers/User.hpp"
 #include "headers/Mischievous.hpp"
 #include "headers/Potions.hpp"
-void use_item(const std::vector<std::shared_ptr<Item>> &inv, Player p) {
+void use_item(const std::vector<std::shared_ptr<Item>> &inv, Player &p) {
     int wichItem;
     std::cout<<"select the item you wnt to use:";
     std::cin>>wichItem;
@@ -89,19 +89,19 @@ int main() {
                     ptr->use();
                     ptr->print();
                 }
-                std::cout<<p1<<'\n';
+                std::cout<<listPlayers[0]<<'\n';
 
                 //mob1.afisare();
                 std::cout<<mob1<<'\n';
                 std::cout<<"------------------------------------------------------\n";
-                mob1.E_Damage_Taken(p1.getPAttack());
-                p1.P_Damage_Taken(p1.getPRecoil());
-                std::cout<<mob1<<'\n';
-                std::cout<<p1<<'\n';
-                p1.P_Damage_Taken(mob1.getEAttack());
-                std::cout<<p1<<'\n';
+                listEnemys[0].E_Damage_Taken(listPlayers[0].getPAttack());
+                listPlayers[0].P_Damage_Taken(listPlayers[0].getPRecoil());
+                std::cout<<listEnemys[0]<<'\n';
+                std::cout<<listPlayers[0]<<'\n';
+                listPlayers[0].P_Damage_Taken(listEnemys[0].getEAttack());
+                std::cout<<listPlayers[0]<<'\n';
                 std::cout<<"------------------------------------------------------\n";
-                Enemy m2(mob1);
+                Enemy m2(listEnemys[0]);
                 std::cout<<m2<<'\n';
                 Gun gun2,gun3;
                 gun3 = gun2 = gun1;

@@ -19,9 +19,9 @@ class User {
 public:
     explicit User(const  std::string &name="",const int &score=0);
 ///functions for interactions
-    const std::string &getName() const;
+   // const std::string &getName() const;
 
-    int getScore() const;
+   // int getScore() const;
 };
 
 

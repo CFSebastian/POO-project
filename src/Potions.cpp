@@ -30,7 +30,7 @@ void Potions::use() {
         }
     }
 }
- void Potions::interact(Player &target) {
+ void Potions::interact(const Player &target) {
     std::cout<<"you interacted with"<<target.getPAttack();
 }
 
