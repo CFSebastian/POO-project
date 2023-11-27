@@ -20,7 +20,7 @@ void use_item(const std::vector<std::shared_ptr<Item>> &inv, Player &p) {
     int whichItem;
     std::cout<<"select the item you want to use:";
     std::cin>>whichItem;
-    if (whichItem >= 0 && whichItem < (int)inv.size()) {
+    if (whichItem >= 0 && whichItem < static_cast<int>(inv.size())) {
         const std::shared_ptr<Item> &itemUsed = inv[whichItem];
         itemUsed->use();
         //inv[wichItem]->use();
