@@ -62,7 +62,7 @@ int main() {
             case 1:/// Create a user to asociate to the score you will obtain when you play
             {*/
                 int invalidName=1;
-                std::vector<User> userScore;
+                //std::vector<User> userScore;
                 std::cout<<"insert name:";
                 while(invalidName){
                     std::string userName;
