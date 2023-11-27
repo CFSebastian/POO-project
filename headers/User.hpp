@@ -13,11 +13,11 @@
 
 class User {
     std::string name;
-    int score;
+    //int score;
     int id=0;
     static int counter;
 public:
-    explicit User(const  std::string &name="",const int &score=0);
+    explicit User(const  std::string &name="");//,const int &score=0
 ///functions for interactions
    // const std::string &getName() const;
 

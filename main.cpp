@@ -17,19 +17,21 @@
 #include "headers/Mischievous.hpp"
 #include "headers/Potions.hpp"
 void use_item(const std::vector<std::shared_ptr<Item>> &inv, Player &p) {
-    int wichItem;
-    std::cout<<"select the item you wnt to use:";
-    std::cin>>wichItem;
-    const std::shared_ptr<Item> &itemUsed=inv[wichItem];
-    itemUsed->use();
-    //inv[wichItem]->use();
-    if (auto potionItem = dynamic_cast<Potions*>(itemUsed.get())) {
-        potionItem->interact(p); // 27
-    }
-        // Attempt to downcast to Weapons
-    else if (auto mischievousItem = dynamic_cast<Mischievous*>(itemUsed.get())) {
-        std::cout<<"Nu pot face nimic cu asta";
-        mischievousItem->print();
+    int whichItem;
+    std::cout<<"select the item you want to use:";
+    std::cin>>whichItem;
+    if (whichItem >= 0 && whichItem < (int)inv.size()) {
+        const std::shared_ptr<Item> &itemUsed = inv[whichItem];
+        itemUsed->use();
+        //inv[wichItem]->use();
+        if (auto potionItem = dynamic_cast<Potions *>(itemUsed.get())) {
+            potionItem->interact(p); // 27
+        }
+            // Attempt to downcast to Weapons
+        else if (auto mischievousItem = dynamic_cast<Mischievous *>(itemUsed.get())) {
+            std::cout << "Nu pot face nimic cu asta";
+            mischievousItem->print();
+        }
     }
 }
 int main() {

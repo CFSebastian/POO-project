@@ -7,7 +7,7 @@
 #include <iostream>
 #include "../headers/User.hpp"
 int User::counter=0;
-User::User(const std::string &name,const int &score) : name(name), score(score), id(++counter) {
+User::User(const std::string &name) : name(name), id(++counter) {//,const int &score ; , score(score)
 
     for(char c:name)
         if(!std::isalnum(c)) {
