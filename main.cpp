@@ -20,14 +20,14 @@ void use_item(const std::vector<std::shared_ptr<Item>> &inv, Player p) {
     int wichItem;
     std::cout<<"select the item you wnt to use:";
     std::cin>>wichItem;
-    //std::shared_ptr<Item> itemUsed=inv[wichItem];
-    //itemUsed->use();
-    inv[wichItem]->use();
-    if (auto potionItem = dynamic_cast<Potions*>(inv[wichItem].get())) {
-        potionItem->interact(p); // Specific action for Potions
+    const std::shared_ptr<Item> &itemUsed=inv[wichItem];
+    itemUsed->use();
+    //inv[wichItem]->use();
+    if (auto potionItem = dynamic_cast<Potions*>(itemUsed.get())) {
+        potionItem->interact(p); // 27
     }
         // Attempt to downcast to Weapons
-    else if (auto mischievousItem = dynamic_cast<Mischievous*>(inv[wichItem].get())) {
+    else if (auto mischievousItem = dynamic_cast<Mischievous*>(itemUsed.get())) {
         std::cout<<"Nu pot face nimic cu asta";
         mischievousItem->print();
     }
